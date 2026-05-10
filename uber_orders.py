@@ -251,8 +251,7 @@ elif page == "Orders Analysis":
         "Q3 - How does the average order value (AOV) vary across different top-performing restaurants?": "avg_order",
         "Q4 - How does the use of discounts impact the average order value and the total number of orders placed?": "discount_analysis",
         "Q5 - What are the most preferred payment methods used by customers, and which one dominates the transactions?": "payment_popularity",
-        "Q6 - Which date had the highest sales?": "peak dates",
-        "Q7 - Which date had the highest sales?": "peak_1 dates"
+        "Q6 - Which date had the highest sales?": "peak dates"
     }
 
     selected_order_q = st.selectbox(
@@ -347,29 +346,6 @@ elif page == "Orders Analysis":
     )
 
     st.dataframe(orders_df, hide_index=True)
-
-    # q7:
-
-else:
-    cursor.execute("""
-            SELECT order_date,
-            SUM(order_value) AS total_sales
-            FROM orders_data
-            GROUP BY order_date
-            ORDER BY total_sales DESC
-            LIMIT 10
-            """)
-
-    orders_data = cursor.fetchall()
-
-    orders_columns = [desc[0] for desc in cursor.description]
-
-    orders_df = pd.DataFrame(
-    orders_data,
-    columns=orders_columns)
-
-    st.dataframe(orders_df, hide_index=True)
-
 
 
 
