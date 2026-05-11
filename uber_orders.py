@@ -33,20 +33,17 @@ def build_filters(location, cuisine, rating_outof_5,
 
     return filters
 
-page = st.sidebar.radio(
-    "Navigate",
+page = st.sidebar.selectbox("PAGE SELECTION",
     [
         "Restaurant Questions",
         "Dynamic Filters",
-        "Orders Analysis"
-    ]
-)
+        "Orders Analysis"])
 
 
 #PAGE 1: Questions (10 selected questions)
 
 if page == "Restaurant Questions":
-    st.title("Business Questions")
+    st.title("Restaurant's Business Questions")
 
     questions = {
         "Q1 - Which Bangalore locations have the highest average restaurant ratings?": "location_rating",
@@ -208,17 +205,11 @@ elif page == "Dynamic Filters":
 
     cuisine = st.selectbox("Cuisine", cuisines)
 
-    rating_outof_5 = st.slider("Minimum Rating", 0.0, 5.0, 3.0)
+    rating_outof_5 = st.selectbox("Minimum Rating",[0, 1, 2, 3, 4, 5])
 
-    online_order = st.selectbox(
-        "Online Order",
-        ["All", "Yes", "No"]
-    )
+    online_order = st.selectbox("Online Order",["All", "Yes", "No"])
 
-    table_booking = st.selectbox(
-        "Table Booking",
-        ["All", "Yes", "No"]
-    )
+    table_booking = st.selectbox("Table Booking",["All", "Yes", "No"])
 
     filters = build_filters(location,cuisine,rating_outof_5,online_order,table_booking)
 
