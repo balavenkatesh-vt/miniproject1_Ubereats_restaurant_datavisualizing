@@ -8,9 +8,7 @@ cursor = connection.cursor(buffered=True)
 
 #step:1
 
-def build_filters(location, cuisine, rating_outof_5,
-                  online_order="All",
-                  table_booking="All"):
+def build_filters(location, cuisine, rating_outof_5,online_order="All",table_booking="All"):
 
     filters = "WHERE 1=1"
 
@@ -20,7 +18,7 @@ def build_filters(location, cuisine, rating_outof_5,
     if cuisine != "All":
         filters += f" AND cuisines = '{cuisine}'"
 
-    if location != "All":
+    if rating_outof_5 != "All":
         filters += f" AND rating_outof_5 = '{rating_outof_5}'"
 
     if online_order != "All":
