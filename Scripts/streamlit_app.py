@@ -255,7 +255,7 @@ elif page == "Orders Analysis":
     if oq == "top_revenue":
         cursor.execute("""
         SELECT restaurant_name,
-               SUM(order_value) total_revenue
+        SUM(order_value) total_revenue
         FROM orders_data
         GROUP BY restaurant_name
         ORDER BY total_revenue DESC
@@ -268,7 +268,7 @@ elif page == "Orders Analysis":
 
         cursor.execute("""
         SELECT restaurant_name,
-               COUNT(order_id) total_orders
+        COUNT(order_id) total_orders
         FROM orders_data
         GROUP BY restaurant_name
         ORDER BY total_orders DESC
